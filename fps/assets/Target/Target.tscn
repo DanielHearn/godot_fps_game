@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Target/Target.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=1]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.694118, 0.14902, 0.14902, 1 )
 
-[sub_resource type="CapsuleMesh" id=2]
-material = SubResource( 3 )
+[sub_resource type="CapsuleMesh" id=3]
+material = SubResource( 2 )
 radius = 0.994
 mid_height = 2.257
 
-[node name="Target" type="KinematicBody" groups=[
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="SphereShape" id=5]
+radius = 7.48035
+
+[node name="Target" type="RigidBody" groups=[
 "enemies",
 ]]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
+mass = 0.00102041
+gravity_scale = 0.0
 script = ExtResource( 1 )
 
 [node name="collision" type="CollisionShape" parent="."]
@@ -22,7 +31,18 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 2.
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.24536, 0 )
-mesh = SubResource( 2 )
+transform = Transform( 1, -6.72788e-10, 1.09612e-16, 0, -1.56708e-07, -0.961865, -6.72788e-10, 0.984608, -1.60413e-07, 0, 2.22247, 0 )
+mesh = SubResource( 3 )
 material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.45144, -1.03713 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="detection_zone" type="Area" parent="."]
+
+[node name="detection_collider" type="CollisionShape" parent="detection_zone"]
+shape = SubResource( 5 )
 [connection signal="hit" from="." to="." method="_on_Target_hit"]
+[connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]

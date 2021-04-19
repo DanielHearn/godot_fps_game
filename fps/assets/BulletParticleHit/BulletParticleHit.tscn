@@ -26,10 +26,13 @@ height = 0.5
 radial_segments = 6
 rings = 4
 
-[node name="BulletParticleHit" type="Spatial"]
+[node name="BulletParticleHit" type="Spatial" groups=[
+"bullet",
+]]
 
 [node name="Particles" type="Particles" parent="."]
 material_override = SubResource( 1 )
+emitting = false
 amount = 1
 lifetime = 3.0
 one_shot = true

@@ -19,6 +19,16 @@ config/name="fps"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+
 [input]
 
 move_forward={
@@ -63,4 +73,5 @@ shoot={
 
 [rendering]
 
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"
