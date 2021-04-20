@@ -16,7 +16,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="barrel_end" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.691234 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.905652 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

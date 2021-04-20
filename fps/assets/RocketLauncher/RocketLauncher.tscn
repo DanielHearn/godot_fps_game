@@ -17,8 +17,9 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="barrel_end" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00122446, -0.00352052, -0.681052 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00122446, -0.00352052, -0.937873 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 [connection signal="shoot" from="." to="." method="_on_Gun_shoot"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
