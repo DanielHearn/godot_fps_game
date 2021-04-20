@@ -19,7 +19,7 @@ var dir = Vector3.ZERO
 var velocity = Vector3.ZERO
 var available_weapons = {
 	1: false,
-	2: false
+	2: true
 }
 
 onready var machine_gun = preload("res://assets/Gun/Gun.tscn")
@@ -28,6 +28,10 @@ onready var rocket_launcher = preload("res://assets/RocketLauncher/RocketLaunche
 func _ready():
 	pivot = $pivot
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	for weapon_number in available_weapons:
+		if (available_weapons[weapon_number]):
+			equip_weapon_from_number(weapon_number)
 	
 func equip_weapon(weapon):
 	if(gun):

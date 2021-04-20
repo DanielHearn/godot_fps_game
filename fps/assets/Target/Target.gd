@@ -10,6 +10,7 @@ func _on_Target_hit(data):
 	if(data.damage):
 		health -= data.damage
 		detectedPlayer = true
+		print(health)
 		if(health <= 0):
 			queue_free()
 

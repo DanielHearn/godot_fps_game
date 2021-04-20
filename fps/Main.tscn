@@ -35,7 +35,7 @@ light_indirect_energy = 0.26
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 6.70595, -3.03992 )
 
 [node name="Target2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 6.70595, -9.44297 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 6.70595, -7.16636 )
 
 [node name="GunPickup" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1455, 8.55373, 9.58803 )
