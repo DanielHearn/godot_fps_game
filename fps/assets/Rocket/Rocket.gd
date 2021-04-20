@@ -1,7 +1,7 @@
 extends Area
 
-var damage = 25
-var muzzle_velocity = 75
+var damage = 50
+var muzzle_velocity = 40
 var velocity = Vector3.ZERO
 
 onready var hit_particle = preload("res://assets/BulletParticleHit/BulletParticleHit.tscn")

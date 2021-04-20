@@ -18,15 +18,19 @@ var playable = true
 var dir = Vector3.ZERO
 var velocity = Vector3.ZERO
 
-onready var gun1 = preload("res://assets/Gun/Gun.tscn")
+onready var machine_gun = preload("res://assets/Gun/Gun.tscn")
+onready var rocket_launcher = preload("res://assets/RocketLauncher/RocketLauncher.tscn")
 
 func _ready():
 	pivot = $pivot
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	equip_weapon(gun1.instance())
+	equip_weapon(machine_gun.instance())
 	
 func equip_weapon(weapon):
+	if(gun):
+		gun.queue_free()
+	
 	gun = weapon
 	get_node("pivot/hand").add_child(gun)
 
@@ -70,6 +74,8 @@ func _physics_process(delta):
 	if translation.y < fall_limit and playable:
 		playable = false
 		
+		
+		
 	if gun and gun.can_shoot and Input.is_action_pressed("shoot"):
 		gun.emit_signal("shoot")
 
@@ -78,7 +84,12 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
-
+		
+	if Input.is_action_pressed("weapon_1"):
+		equip_weapon(machine_gun.instance())
+	elif Input.is_action_pressed("weapon_2"):
+		equip_weapon(rocket_launcher.instance())
+	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and playable:
 		rotate_y(-event.relative.x * mouse_sensitivity)
