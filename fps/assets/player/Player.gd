@@ -17,6 +17,10 @@ var pivot
 var playable = true
 var dir = Vector3.ZERO
 var velocity = Vector3.ZERO
+var available_weapons = {
+	1: false,
+	2: false
+}
 
 onready var machine_gun = preload("res://assets/Gun/Gun.tscn")
 onready var rocket_launcher = preload("res://assets/RocketLauncher/RocketLauncher.tscn")
@@ -25,14 +29,24 @@ func _ready():
 	pivot = $pivot
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	equip_weapon(machine_gun.instance())
-	
 func equip_weapon(weapon):
 	if(gun):
 		gun.queue_free()
 	
 	gun = weapon
 	get_node("pivot/hand").add_child(gun)
+	
+func equip_weapon_from_number(number):
+	var gun_instance = null
+	if(number == 1):
+		 gun_instance = machine_gun.instance()
+	elif(number == 2):
+		 gun_instance = rocket_launcher.instance()
+		
+	available_weapons[number] = true
+	
+	if(number):
+		equip_weapon(gun_instance)
 
 func _physics_process(delta):
 	dir = Vector3.ZERO
@@ -74,8 +88,6 @@ func _physics_process(delta):
 	if translation.y < fall_limit and playable:
 		playable = false
 		
-		
-		
 	if gun and gun.can_shoot and Input.is_action_pressed("shoot"):
 		gun.emit_signal("shoot")
 
@@ -85,10 +97,10 @@ func _process(delta):
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
 		
-	if Input.is_action_pressed("weapon_1"):
-		equip_weapon(machine_gun.instance())
-	elif Input.is_action_pressed("weapon_2"):
-		equip_weapon(rocket_launcher.instance())
+	if Input.is_action_pressed("weapon_1") and available_weapons[1]:
+		equip_weapon_from_number(1)
+	elif Input.is_action_pressed("weapon_2") and available_weapons[2]:
+		equip_weapon_from_number(2)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and playable:
@@ -103,9 +115,11 @@ func update_gui():
 func _on_Player_pickup(data):
 	print('Pickup')
 	print(data)
-	if data["health"]:
-		health += data.health
+	if data.has("health"):
+		health += data.get("health")
 		
+	if data.has("gun"):
+		equip_weapon_from_number(data.get("gun"))
 		
 	update_gui()
 	pass # Replace with function body.
