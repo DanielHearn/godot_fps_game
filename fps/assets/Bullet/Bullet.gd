@@ -17,3 +17,8 @@ func _on_Bullet_body_shape_entered(body_id, body, body_shape, area_shape):
 	particle_instance.translate_object_local(Vector3(0, 0, 10))
 	body.emit_signal('hit', {"damage": damage})
 	queue_free()
+
+
+func _on_Timer_timeout():
+	queue_free()
+	pass # Replace with function body.
