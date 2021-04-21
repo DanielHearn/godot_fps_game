@@ -6,11 +6,9 @@ export var health = 100
 var detectedPlayer = false
 
 func _on_Target_hit(data):
-	print('target hit')
 	if(data.damage):
 		health -= data.damage
 		detectedPlayer = true
-		print(health)
 		if(health <= 0):
 			queue_free()
 

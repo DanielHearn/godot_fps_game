@@ -1,25 +1,19 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal initialise_player_gui
 
 onready var health_text = $"status/health_label"
+var player_instance = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var player_health = $"../Player".health
-	health_text.text = String(player_health)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func initialise_player_gui(player):
+	player_instance = player
+	health_text.text = String(player_instance.health)
 
 func update_status(status):
 	health_text.text = String(status["health"])
 
 func _on_Player_status_change(status):
 	update_status(status)
-	pass # Replace with function body.
+
+func _on_GUI_initialise_player_gui(player):
+	initialise_player_gui(player)

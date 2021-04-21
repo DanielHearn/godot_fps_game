@@ -8,7 +8,7 @@
 bg_color = Color( 0, 0, 0, 0.121569 )
 corner_radius_bottom_right = 16
 
-[node name="Control" type="Control"]
+[node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -56,3 +56,4 @@ margin_bottom = 0.199982
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="initialise_player_gui" from="." to="." method="_on_GUI_initialise_player_gui"]

@@ -9,7 +9,8 @@ export var jump_speed = 12.0
 export var mouse_sensitivity = 0.002
 export var acceleration = 4.0
 export var friction = 6.0
-export var fall_limit = -1000.0
+export var fall_limit = -100.0
+export var max_health = 100
 export var health = 100
 
 var gun = null
@@ -51,6 +52,10 @@ func equip_weapon_from_number(number):
 	
 	if(number):
 		equip_weapon(gun_instance)
+		
+func reset():
+	get_tree().get_root().get_node("Main").emit_signal("reset")
+	playable = true
 
 func _physics_process(delta):
 	dir = Vector3.ZERO
@@ -91,6 +96,7 @@ func _physics_process(delta):
 	#prevents infinite falling
 	if translation.y < fall_limit and playable:
 		playable = false
+		reset()
 		
 	if gun and gun.can_shoot and Input.is_action_pressed("shoot"):
 		gun.emit_signal("shoot")
@@ -126,4 +132,3 @@ func _on_Player_pickup(data):
 		equip_weapon_from_number(data.get("gun"))
 		
 	update_gui()
-	pass # Replace with function body.
