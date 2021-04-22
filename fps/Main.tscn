@@ -17,10 +17,16 @@ script = ExtResource( 8 )
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
 
 [node name="Ceiling" parent="." instance=ExtResource( 1 )]
-transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 10, 0 )
+transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0.00364971, 10, -0.00756729 )
 
 [node name="Wall1" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0, 20, 21, 5, 0 )
+
+[node name="Wall5" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0, 1, 0.0204047, 5, 7.7359 )
+
+[node name="Wall6" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0, 1, 0.0204047, 5, -7.64204 )
 
 [node name="Wall2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.74846e-07, -1, 0, 4, -4.37114e-08, 0, 0, 0, 20, -21, 5, 0 )
@@ -32,10 +38,10 @@ transform = Transform( -1.74846e-07, 4.37114e-08, -20, 4, -4.37114e-08, -8.74228
 transform = Transform( -1.74846e-07, 4.37114e-08, -20, 4, -4.37114e-08, -8.74228e-07, -1.74846e-07, -1, -8.74228e-07, -9.08971e-07, 5, 21 )
 
 [node name="HealthPack" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48335, 2.17629, 12.5572 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48335, 1.98928, 12.5572 )
 
 [node name="HealthPack2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742567, 2.17629, 12.5572 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742567, 1.98928, 12.5572 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
@@ -46,24 +52,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 0.76252, -3.03992 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 0.76252, -7.16636 )
 
 [node name="GunPickup" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1455, 2.6103, 9.58803 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1455, 1.99477, 9.58803 )
 
 [node name="GunPickup2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25683, 2.6103, 13.1082 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25683, 1.99477, 13.1082 )
 gun = 2
 
 [node name="SpawnPoint" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85023, 1.07887, -4.13949 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.52291, 1.06122, -3.99314 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5865, 1.60648, -3.91885 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.95335, 0 )
-light_energy = 0.15
-light_indirect_energy = 3.25
+transform = Transform( 0.999999, -0.00106563, 0.000223044, 0.00106572, 0.999999, -0.000376161, -0.000222643, 0.000376398, 1, -0.00489712, 5.96981, 0.0024147 )
+light_energy = 8.1
+light_indirect_energy = 2.75
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 40.1
-omni_attenuation = 1.07177
+shadow_reverse_cull_face = true
+omni_range = 30.6
+omni_attenuation = 4.75681
 [connection signal="reset" from="." to="." method="_on_Main_reset"]
 [connection signal="status_change" from="Player" to="GUI" method="_on_Player_status_change"]
