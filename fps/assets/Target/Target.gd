@@ -3,6 +3,7 @@ extends RigidBody
 signal hit
 
 export var health = 100
+export var movement_speed = 10
 var detectedPlayer = false
 
 func _on_Target_hit(data):

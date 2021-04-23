@@ -18,9 +18,10 @@ var pivot
 var playable = true
 var dir = Vector3.ZERO
 var velocity = Vector3.ZERO
+var equipped_weapon = null
 var available_weapons = {
-	1: false,
-	2: true
+	1: true,
+	2: false
 }
 
 onready var machine_gun = preload("res://assets/Gun/Gun.tscn")
@@ -43,6 +44,7 @@ func equip_weapon(weapon):
 	
 func equip_weapon_from_number(number):
 	var gun_instance = null
+	equipped_weapon = number
 	if(number == 1):
 		 gun_instance = machine_gun.instance()
 	elif(number == 2):
@@ -101,7 +103,17 @@ func _physics_process(delta):
 	if gun and gun.can_shoot and Input.is_action_pressed("shoot"):
 		gun.emit_signal("shoot")
 
-	
+func change_weapon_from_scroll(change):
+	var new_equipped = equipped_weapon + change
+	var number_of_weapons = available_weapons.keys().size()
+	if new_equipped < 1:
+		new_equipped = number_of_weapons
+	elif new_equipped > number_of_weapons:
+		new_equipped = 1
+		
+	if available_weapons.get(new_equipped):
+		equip_weapon_from_number(new_equipped)
+
 #Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("exit"):
@@ -111,6 +123,10 @@ func _process(delta):
 		equip_weapon_from_number(1)
 	elif Input.is_action_pressed("weapon_2") and available_weapons[2]:
 		equip_weapon_from_number(2)
+	if Input.is_action_just_released("scroll_up"):
+		change_weapon_from_scroll(1)
+	elif Input.is_action_just_released("scroll_down"):
+		change_weapon_from_scroll(-1)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and playable:
