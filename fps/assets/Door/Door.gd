@@ -16,10 +16,10 @@ func _process(delta):
 
 
 func _on_Area_body_entered(body):
-	if body.is_in_group("player") or body.is_in_group("enemies"):
+	if body.is_in_group("entities"):
 		colliding_entities += 1
 
 
 func _on_Area_body_exited(body):
-	if body.is_in_group("player") or body.is_in_group("enemies"):
+	if body.is_in_group("entities"):
 		colliding_entities -= 1

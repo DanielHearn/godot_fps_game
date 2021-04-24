@@ -20,6 +20,7 @@ radius = 7.48035
 
 [node name="Target" type="RigidBody" groups=[
 "enemies",
+"entities",
 ]]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 mass = 0.00102041

@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape" id=1]
 
 [node name="Player" type="KinematicBody" groups=[
+"entities",
 "player",
 ]]
 script = ExtResource( 1 )
