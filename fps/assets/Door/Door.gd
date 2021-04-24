@@ -5,7 +5,7 @@ var maxOpen = 1.8
 var speed = 3
 var colliding_entities = 0
 
-func _process(delta):
+func _physics_process(delta):
 	var delta_speed = speed * delta
 	if colliding_entities > 0 and y < maxOpen:
 		y += delta_speed
