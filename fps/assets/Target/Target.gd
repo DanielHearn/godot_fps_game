@@ -51,5 +51,4 @@ func _physics_process(delta):
 func _on_detection_zone_body_entered(body):
 	if body.is_in_group("player"):
 		detectedPlayer = true
-		print('Player detected')
 		

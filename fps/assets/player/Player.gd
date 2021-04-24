@@ -13,6 +13,7 @@ export var fall_limit = -100.0
 export var max_health = 100
 export var health = 100
 
+var can_swap_weapon = true
 var gun = null
 var pivot
 var playable = true
@@ -36,6 +37,8 @@ func _ready():
 			equip_weapon_from_number(weapon_number)
 	
 func equip_weapon(weapon):
+	can_swap_weapon = false
+	$can_swap_weapon_timer.start()
 	if(gun):
 		gun.queue_free()
 	
@@ -119,14 +122,15 @@ func _process(delta):
 	if Input.is_action_pressed("exit"):
 		get_tree().quit()
 		
-	if Input.is_action_pressed("weapon_1") and available_weapons[1]:
-		equip_weapon_from_number(1)
-	elif Input.is_action_pressed("weapon_2") and available_weapons[2]:
-		equip_weapon_from_number(2)
-	if Input.is_action_just_released("scroll_up"):
-		change_weapon_from_scroll(1)
-	elif Input.is_action_just_released("scroll_down"):
-		change_weapon_from_scroll(-1)
+	if can_swap_weapon:
+		if Input.is_action_pressed("weapon_1") and available_weapons[1]:
+			equip_weapon_from_number(1)
+		elif Input.is_action_pressed("weapon_2") and available_weapons[2]:
+			equip_weapon_from_number(2)
+		if Input.is_action_just_released("scroll_up"):
+			change_weapon_from_scroll(1)
+		elif Input.is_action_just_released("scroll_down"):
+			change_weapon_from_scroll(-1)
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and playable:
@@ -148,3 +152,6 @@ func _on_Player_pickup(data):
 		equip_weapon_from_number(data.get("gun"))
 		
 	update_gui()
+
+func _on_can_swap_weapon_timer_timeout():
+	can_swap_weapon = true
