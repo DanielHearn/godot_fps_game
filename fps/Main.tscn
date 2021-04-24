@@ -47,7 +47,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742567, 1.98928, 12.5572 )
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
 [node name="Target" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 0.76252, -3.03992 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3858, 0.76252, -3.03992 )
 
 [node name="Target2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4418, 0.76252, -7.16636 )
