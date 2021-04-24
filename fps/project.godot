@@ -95,6 +95,10 @@ scroll_down={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="bullets"
+
 [physics]
 
 2d/thread_model=2

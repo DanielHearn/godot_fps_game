@@ -8,6 +8,7 @@
 "entities",
 "player",
 ]]
+collision_mask = 2147483649
 script = ExtResource( 1 )
 
 [node name="collision" type="CollisionShape" parent="."]
@@ -15,13 +16,13 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 2.
 shape = SubResource( 1 )
 
 [node name="pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855769, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04869, 0 )
 
 [node name="camera" type="Camera" parent="pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6581, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277307, 0.00326633 )
 
 [node name="hand" type="Spatial" parent="pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550147, 2.32559, -0.704229 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549803, 0.0182745, -0.316566 )
 
 [node name="can_swap_weapon_timer" type="Timer" parent="."]
 wait_time = 0.15

@@ -11,12 +11,13 @@ func _physics_process(delta):
 	transform.origin += velocity * delta
  
 func _on_Bullet_body_shape_entered(body_id, body, body_shape, area_shape):
-	var particle_instance = hit_particle.instance()
-	get_tree().get_root().add_child(particle_instance)
-	particle_instance.transform = $CollisionShape.global_transform
-	particle_instance.translate_object_local(Vector3(0, 0, 10))
-	body.emit_signal('hit', {"damage": damage})
-	queue_free()
+	if not body.is_in_group("player"):
+		var particle_instance = hit_particle.instance()
+		get_tree().get_root().add_child(particle_instance)
+		particle_instance.transform = $CollisionShape.global_transform
+		particle_instance.translate_object_local(Vector3(0, 0, 10))
+		body.emit_signal('hit', {"damage": damage})
+		queue_free()
 
 
 func _on_Timer_timeout():
