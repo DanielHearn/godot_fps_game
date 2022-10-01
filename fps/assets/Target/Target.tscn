@@ -18,10 +18,7 @@ size = Vector3( 0.5, 0.5, 0.5 )
 [sub_resource type="SphereShape" id=5]
 radius = 7.48035
 
-[node name="Target" type="KinematicBody" groups=[
-"enemies",
-"entities",
-]]
+[node name="Target" type="KinematicBody" groups=["enemies", "entities"]]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 script = ExtResource( 1 )
 
@@ -40,8 +37,10 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="detection_zone" type="Area" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 
 [node name="detection_collider" type="CollisionShape" parent="detection_zone"]
 shape = SubResource( 5 )
+
 [connection signal="hit" from="." to="." method="_on_Target_hit"]
 [connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]

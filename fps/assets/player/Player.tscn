@@ -4,10 +4,7 @@
 
 [sub_resource type="CapsuleShape" id=1]
 
-[node name="Player" type="KinematicBody" groups=[
-"entities",
-"player",
-]]
+[node name="Player" type="KinematicBody" groups=["entities", "player"]]
 collision_mask = 2147483649
 script = ExtResource( 1 )
 
@@ -26,5 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549803, 0.0182745, -0.316566
 
 [node name="can_swap_weapon_timer" type="Timer" parent="."]
 wait_time = 0.15
+
+[connection signal="kill" from="." to="." method="_on_Player_kill"]
 [connection signal="pickup" from="." to="." method="_on_Player_pickup"]
 [connection signal="timeout" from="can_swap_weapon_timer" to="." method="_on_can_swap_weapon_timer_timeout"]

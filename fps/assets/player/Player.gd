@@ -1,14 +1,16 @@
 extends KinematicBody
 
 signal pickup
+signal damage
+signal kill
 signal status_change
 
-export var gravity = -28.0
+export var gravity = -34.0
 export var walk_speed = 14.0
 export var jump_speed = 12.0
 export var mouse_sensitivity = 0.002
 export var acceleration = 4.0
-export var friction = 6.0
+export var friction = 7.0
 export var fall_limit = -100.0
 export var max_health = 100
 export var health = 100
@@ -151,6 +153,22 @@ func _on_Player_pickup(data):
 	if data.has("gun"):
 		equip_weapon_from_number(data.get("gun"))
 		
+	update_gui()
+	
+func _on_Player_damage(data):
+	print('Damage')
+	print(data)
+	if data.has("health"):
+		health -= data.get("health")
+	
+	if health < max_health:
+		reset()
+		
+	update_gui()
+	
+func _on_Player_kill():
+	print('Kill')
+	reset()
 	update_gui()
 
 func _on_can_swap_weapon_timer_timeout():

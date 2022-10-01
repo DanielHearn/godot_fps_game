@@ -59,5 +59,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48932, 1.99146, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 2.6885, 0, 0, 0, 1.77399, 0, 0, 0, 4.54657, 0, -0.28763, 0 )
 shape = SubResource( 6 )
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
