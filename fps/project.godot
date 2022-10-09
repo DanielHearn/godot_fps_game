@@ -27,6 +27,11 @@ gdscript/warnings/unsafe_method_access=true
 gdscript/warnings/unsafe_cast=true
 gdscript/warnings/unsafe_call_argument=true
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+
 [input]
 
 move_forward={
@@ -105,4 +110,6 @@ scroll_down={
 [rendering]
 
 threads/thread_model=2
+quality/filters/msaa=4
+quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/Target/Target.gd" type="Script" id=1]
+[ext_resource path="res://assets/Gun/Gun.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -42,5 +43,12 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 [node name="detection_collider" type="CollisionShape" parent="detection_zone"]
 shape = SubResource( 5 )
 
+[node name="Gun" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.27569e-08, 2.56267, -0.717855 )
+damage = 10
+muzzle_velocity = 30
+wait_time = 1.5
+
 [connection signal="hit" from="." to="." method="_on_Target_hit"]
+[connection signal="area_entered" from="detection_zone" to="." method="_on_detection_zone_area_entered"]
 [connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]

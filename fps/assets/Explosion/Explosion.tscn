@@ -11,7 +11,7 @@ albedo_color = Color( 1, 0.2, 0.0509804, 0.47451 )
 [sub_resource type="SphereMesh" id=3]
 material = SubResource( 2 )
 
-[node name="Explosion" type="Area"]
+[node name="Explosion" type="Area" groups=["explosion"]]
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
 script = ExtResource( 1 )
@@ -27,5 +27,6 @@ material/0 = null
 wait_time = 0.25
 one_shot = true
 autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_Explosion_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

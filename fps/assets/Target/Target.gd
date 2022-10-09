@@ -10,6 +10,7 @@ var velocity = Vector3.ZERO
 export var gravity = -28.0
 export var acceleration = 2.0
 export var friction = 6.0
+onready var gun = get_node("Gun")
 
 func _on_Target_hit(data):
 	if(data.damage):
@@ -28,6 +29,9 @@ func _physics_process(delta):
 			var endposition = get_node("../Player").global_transform.origin;
 			look_at(Vector3(endposition.x, translation.y, endposition.z), Vector3(0, 1, 0))
 			dir -= basis.z
+			
+			if gun and gun.can_shoot:
+				gun.emit_signal("shoot")
 
 	var speed = walk_speed
 	if is_on_floor():
@@ -47,8 +51,13 @@ func _physics_process(delta):
 	velocity.x = hvel.x
 	velocity.z = hvel.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	
 
 func _on_detection_zone_body_entered(body):
 	if body.is_in_group("player"):
+		detectedPlayer = true
+
+func _on_detection_zone_area_entered(body):
+	if body.is_in_group("bullet") or body.is_in_group("explosion"):
 		detectedPlayer = true
 		

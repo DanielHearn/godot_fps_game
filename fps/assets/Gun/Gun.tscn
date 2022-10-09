@@ -20,5 +20,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.905652 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
+
 [connection signal="shoot" from="." to="." method="_on_Gun_shoot"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

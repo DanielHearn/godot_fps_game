@@ -19,11 +19,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04869, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277307, 0.00326633 )
 
 [node name="hand" type="Spatial" parent="pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549803, 0.0182745, -0.316566 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549803, 0.0182745, -0.578655 )
 
 [node name="can_swap_weapon_timer" type="Timer" parent="."]
 wait_time = 0.15
 
+[connection signal="hit" from="." to="." method="_on_Player_hit"]
 [connection signal="kill" from="." to="." method="_on_Player_kill"]
 [connection signal="pickup" from="." to="." method="_on_Player_pickup"]
 [connection signal="timeout" from="can_swap_weapon_timer" to="." method="_on_can_swap_weapon_timer_timeout"]

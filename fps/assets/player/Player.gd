@@ -1,7 +1,7 @@
 extends KinematicBody
 
 signal pickup
-signal damage
+signal hit
 signal kill
 signal status_change
 
@@ -155,13 +155,13 @@ func _on_Player_pickup(data):
 		
 	update_gui()
 	
-func _on_Player_damage(data):
+func _on_Player_hit(data):
 	print('Damage')
 	print(data)
-	if data.has("health"):
-		health -= data.get("health")
+	if data.has("damage"):
+		health -= data.get("damage")
 	
-	if health < max_health:
+	if health < 0:
 		reset()
 		
 	update_gui()
